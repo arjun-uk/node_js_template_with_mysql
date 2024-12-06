@@ -1,12 +1,10 @@
 const express = require('express');
-const connection = require('../config/database.js');
+const userRoutes = require('./routes/userRoutes');
 
 
 const app = express();
-
-app.get('/', (req, res) => {
-    res.send('Hello, Node.js!');
-});
+app.use(express.json());
+app.use('/api/users', userRoutes);
 
 const PORT = 3000;
 app.listen(PORT, () => {
